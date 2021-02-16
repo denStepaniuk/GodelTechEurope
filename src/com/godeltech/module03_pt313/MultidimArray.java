@@ -2,15 +2,15 @@ package com.godeltech.module03_pt313;
 
 import java.util.*;
 
-public class MultidimArray<T> implements Collection <T>{
+public class MultidimArray implements Collection<Integer>{
 
-    T [][] array;
+    Integer [][] array;
 
-    public MultidimArray(T[][] array) {
+    public MultidimArray(Integer[][] array) {
         this.array = array;
     }
 
-    public T[][] getArray() {
+    public Integer[][] getArray() {
         return array;
     }
 
@@ -26,7 +26,7 @@ public class MultidimArray<T> implements Collection <T>{
 
     public static void main(String[] args) {
 
-        MultidimArray<Integer> integers = new MultidimArray<>(new Integer[10][10]);
+        MultidimArray integers = new MultidimArray(new Integer[10][10]);
         System.out.println(integers.getArray().length);
         randomFillNumbers(integers.getArray());
         System.out.println(Arrays.deepToString(integers.getArray()));
@@ -49,7 +49,7 @@ public class MultidimArray<T> implements Collection <T>{
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<Integer> iterator() {
         return null;
     }
 
@@ -59,12 +59,12 @@ public class MultidimArray<T> implements Collection <T>{
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
+    public <T> T[] toArray(T[] a) {
         return null;
     }
 
     @Override
-    public boolean add(T t) {
+    public boolean add(Integer integer) {
         return false;
     }
 
@@ -79,7 +79,7 @@ public class MultidimArray<T> implements Collection <T>{
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
+    public boolean addAll(Collection<? extends Integer> c) {
         return false;
     }
 
