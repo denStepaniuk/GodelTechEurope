@@ -16,20 +16,22 @@ public class MultidimArray implements Collection<Integer>{
 
     public static void randomFillNumbers(Integer[][] array){
         Random random = new Random();
-        for (int i = 0; i < array.length - 1; i++){
+        for (int i = 0; i < array.length; i++){
             for (int j = 0; j < array.length; j++) {
                 array[i][j] = random.nextInt(100) + 1;
             }
         }
-
     }
 
     public static void main(String[] args) {
 
         MultidimArray integers = new MultidimArray(new Integer[10][10]);
-        System.out.println(integers.getArray().length);
+//        System.out.println(integers.getArray().length);
         randomFillNumbers(integers.getArray());
-        System.out.println(Arrays.deepToString(integers.getArray()));
+//        System.out.println(Arrays.deepToString(integers.getArray()));
+        for (Integer[] i : integers.getArray()){
+            System.out.println(Arrays.toString(i));
+        }
 
     }
 
