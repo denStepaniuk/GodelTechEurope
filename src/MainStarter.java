@@ -1,7 +1,5 @@
 import com.godeltech.module03_pt313.MultidimArray;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Iterator;
 
 public class MainStarter {
@@ -25,13 +23,17 @@ public class MainStarter {
                 System.out.println(people.getStatementXY(i,j));
             }
         }
-        //add try interface;
-        Collection<Integer> collection = new MultidimArray<>(new Integer[1][5]);
-        collection.add(456);
-        System.out.println(collection.toString());
+//        //add trough implemented interface;
+//        Collection<Integer> collection = new MultidimArray<>(new Integer[1][5]);
+//        collection.add(456);
+//        System.out.println(collection.toString());
+
+        Iterator iterator = integers.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 }
-
 
 class Person {
     String name;

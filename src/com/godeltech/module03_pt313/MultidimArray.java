@@ -1,7 +1,9 @@
 package com.godeltech.module03_pt313;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * 1. Реализовать класс для работы с двумерным массивом на базе коллекций (интерфейса Collection).
@@ -14,6 +16,7 @@ import java.util.*;
 
 public class MultidimArray<T> implements Collection<T> {
     static Scanner scanner = new Scanner(System.in);
+
     T[][] array;
     T t;
 
@@ -25,11 +28,11 @@ public class MultidimArray<T> implements Collection<T> {
         return array;
     }
 
-    public T getStatementXY(Integer x, Integer y){
+    public T getStatementXY(Integer x, Integer y) {
         return this.array[x][y];
     }
 
-    public void setStatementXY(Integer x, Integer y, T t){
+    public void setStatementXY(Integer x, Integer y, T t) {
         this.array[x][y] = t;
     }
 
@@ -50,9 +53,7 @@ public class MultidimArray<T> implements Collection<T> {
 
     @Override
     public Iterator<T> iterator() {
-
-
-        return null;
+        return new Itr();
     }
 
     @Override
@@ -67,9 +68,9 @@ public class MultidimArray<T> implements Collection<T> {
 
     @Override
     public boolean add(T t) {
-        System.out.println("Input X " + (this.array.length - 1) + " maximum");
+        System.out.println("Input X, value " + (this.array.length - 1) + " is maximum");
         int x = scanner.nextInt();
-        System.out.println("Input X " + (this.array[x].length - 1) + " maximum");
+        System.out.println("Input Y, value " + (this.array[x].length - 1) + " is maximum");
         int y = scanner.nextInt();
         this.array[x][y] = t;
         return t == null ? false : true;
@@ -112,4 +113,27 @@ public class MultidimArray<T> implements Collection<T> {
                 "array=" + Arrays.deepToString(array) +
                 '}';
     }
+
+    private class Itr implements Iterator {
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            if (index < array.length) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Object next() {
+            if (this.hasNext()) {
+                return Arrays.deepToString(array[index++]);
+            }
+            return null;
+        }
+    }
 }
+
+
+
