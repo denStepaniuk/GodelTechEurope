@@ -8,8 +8,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface RandomStatements {
-    int value() default 0;
-    String strValue() default "Hello World!";
+
+    int number() default 0;
+
+    String value() default "Hello World!";
+
     boolean isValue() default false;
 }
 

@@ -10,8 +10,6 @@ import java.util.Scanner;
  * a) Реализовать методы get/set значения из строки и столбца
  * b) При проходе по коллекции использовать итератор
  * c) Все методы интерфейса Collection реализовывать не нужно, можно бросать UnsupportedOperationException
- * 2. Создать аннотацию, которую можно поместить на поля класса, которая генерирует случайное значение в этом поле.
- * Поля могут быть с типами: Integer, Boolean, String. Создать обработчик аннотации, который будет содержать логику генерации случайных значений.
  */
 
 public class MultidimArray<T> implements Collection<T> {
@@ -114,6 +112,9 @@ public class MultidimArray<T> implements Collection<T> {
                 '}';
     }
 
+    /**
+     * specific Iterator for this.class;
+     */
     private class Itr implements Iterator {
         private int index;
 
