@@ -14,6 +14,11 @@ public class TestAnnotationMain {
         TestAnnotationMain test = new TestAnnotationMain();
         Car car = new Car();
         test.print(car, car.getClass());
+        Class<Car> carClass = Car.class;
+        Field[] declaredFields = carClass.getDeclaredFields();
+        for (Field field : declaredFields){
+            System.out.println(field.getName() + ", " + field.getType());
+        }
     }
 
     void print(Object o, Class<? extends Car> c) throws IllegalAccessException {
@@ -34,7 +39,16 @@ public class TestAnnotationMain {
 
 class Car {
     @RandomStatements
-    static int anInt;
-    boolean aBoolean;
-    String string;
+    int id;
+    boolean isPetrol;
+    String model;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", isPetrol=" + isPetrol +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }
