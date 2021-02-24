@@ -77,17 +77,15 @@ class Costumer implements Runnable {
         /**
          * Random giveaway of tickets, no more than maxTicketPerCostumer count;
          */
-        synchronized (lock) {
-            if (!Store.getTicketList().isEmpty()) {
-                for (int i = 0; i <= random.nextInt(Store.maxTicketPerCostumer); i++) {
-                    Store.getTicketList().remove(random.nextInt(Store.getTicketList().size() - 1));
-                    this.ticketOwn++;
-                }
-            } else {
-                return;
+        if (!Store.getTicketList().isEmpty()) {
+            for (int i = 0; i <= random.nextInt(Store.maxTicketPerCostumer); i++) {
+                Store.getTicketList().remove(random.nextInt(Store.getTicketList().size() - 1));
+                this.ticketOwn++;
             }
-            System.out.println("Costumer N:" + this.costumerId + " have " + this.ticketOwn + " tickets.");
+        } else {
+            return;
         }
+        System.out.println("Costumer N:" + this.costumerId + " have " + this.ticketOwn + " tickets.");
     }
 
     @Override
