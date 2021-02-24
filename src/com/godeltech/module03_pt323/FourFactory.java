@@ -31,6 +31,9 @@ public class FourFactory {
 
 }
 
+/**
+ * Represent an object for store a collection;
+ */
 class MassMarkets {
     static BlockingQueue<Long> massMarkets = new LinkedBlockingQueue<>();
 
@@ -39,6 +42,9 @@ class MassMarkets {
     }
 }
 
+/**
+ * Some thing like MassMarket class;
+ */
 class Warehouse {
     private static final int STORAGE_CAPACITY = 1_000;
     static BlockingQueue<Long> storage = new LinkedBlockingQueue<>(STORAGE_CAPACITY);
