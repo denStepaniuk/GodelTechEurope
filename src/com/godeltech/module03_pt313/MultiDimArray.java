@@ -12,13 +12,13 @@ import java.util.Scanner;
  * c) Все методы интерфейса Collection реализовывать не нужно, можно бросать UnsupportedOperationException
  */
 
-public class MultidimArray<T> implements Collection<T> {
+public class MultiDimArray<T> implements Collection<T> {
     static Scanner scanner = new Scanner(System.in);
 
-    T[][] array;
-    T t;
+    private T[][] array;
+    private T t;
 
-    public MultidimArray(T[][] array) {
+    public MultiDimArray(T[][] array) {
         this.array = array;
     }
 
@@ -107,7 +107,7 @@ public class MultidimArray<T> implements Collection<T> {
 
     @Override
     public String toString() {
-        return "MultidimArray{" +
+        return "MultiDimArray{" +
                 "array=" + Arrays.deepToString(array) +
                 '}';
     }

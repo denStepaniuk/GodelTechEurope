@@ -39,9 +39,9 @@ public class TestAnnotationMain {
 
 class Car {
     @RandomStatements
-    int id;
-    boolean isPetrol;
-    String model;
+    private int id;
+    private boolean isPetrol;
+    private String model;
 
     @Override
     public String toString() {

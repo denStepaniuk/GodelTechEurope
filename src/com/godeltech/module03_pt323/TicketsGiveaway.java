@@ -25,13 +25,13 @@ public class TicketsGiveaway {
 
         ExecutorService exec = Executors.newFixedThreadPool(quantityOfCostumers);
         for (int i = 0; i <= quantityOfCostumers; i++) {
-            exec.submit(new Costumer(i));
+            exec.submit(new Customer(i));
         }
         exec.shutdown();
         exec.awaitTermination(15, TimeUnit.SECONDS);
         System.out.println("___________________________________________________________");
         System.out.println("Total tickets costumers have: " + (quantityOfTickets - Store.getTicketList().size()));
-        System.out.println("Total costumers come: " + Costumer.costumers);
+        System.out.println("Total costumers come: " + Customer.customers);
     }
 }
 
@@ -61,15 +61,15 @@ class Ticket {
 /**
  * Class realise costumer which takes a tickets;
  */
-class Costumer implements Runnable {
-    static int costumers;
+class Customer implements Runnable {
+    static int customers;
     int ticketOwn;
-    int costumerId;
+    int customerId;
     final Object lock = new Object();
 
-    public Costumer(int costumerId) {
-        this.costumerId = costumerId;
-        costumers++;
+    public Customer(int costumerId) {
+        this.customerId = costumerId;
+        customers++;
     }
 
     void getTickets() {
@@ -85,7 +85,7 @@ class Costumer implements Runnable {
         } else {
             return;
         }
-        System.out.println("Costumer N:" + this.costumerId + " have " + this.ticketOwn + " tickets.");
+        System.out.println("Customer N:" + this.customerId + " have " + this.ticketOwn + " tickets.");
     }
 
     @Override
