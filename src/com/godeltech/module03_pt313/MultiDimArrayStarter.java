@@ -1,23 +1,24 @@
 package com.godeltech.module03_pt313;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class MultidimArrayStarter {
+public class MultiDimArrayStarter {
 
     public static void main(String[] args) {
         //add Integer types;
-        MultidimArray<Integer> integers = new MultidimArray<>(new Integer[1][3]);
+        MultiDimArray<Integer> integers = new MultiDimArray<>(new Integer[1][3]);
         integers.setStatementXY(0, 2, 159);
         System.out.println(integers.getStatementXY(0, 2));
 
         //add String types;
-        MultidimArray<String> strings = new MultidimArray<>(new String[1][3]);
+        MultiDimArray<String> strings = new MultiDimArray<>(new String[1][3]);
         strings.setStatementXY(0, 1, "Hello!");
         System.out.println(strings.getStatementXY(0, 1));
 
         //add custom types;
-        MultidimArray<Person> people = new MultidimArray<>(new Person[1][2]);
+        MultiDimArray<Person> people = new MultiDimArray<>(new Person[1][2]);
         people.setStatementXY(0, 0, new Person("Georg", 18));
         for (int i = 0; i < people.size(); i++) {
             for (int j = 0; j < people.size(); j++) {
@@ -25,20 +26,27 @@ public class MultidimArrayStarter {
             }
         }
         //add trough interface;
-        Collection<Integer> collection = new MultidimArray<>(new Integer[1][5]);
+        Collection<Integer> collection = new MultiDimArray<>(new Integer[1][5]);
         collection.add(456);
-        System.out.println(collection.toString());
-
-        Iterator iterator = integers.iterator();
+        System.out.println("This collection " + collection.toString());
+        /**
+         * Done with iterator which implemented inside class;
+         */
+        Iterator<?> iterator = integers.iterator();
         while(iterator.hasNext()){
-            System.out.println(iterator.next());
+            System.out.println("Iterator - " + iterator.next());
         }
+        /**
+         * Done with streams and multithreading;
+         */
+        String s = Arrays.toString(collection.parallelStream().toArray());
+        System.out.println(s);
     }
 }
 
 class Person {
-    String name;
-    Integer age;
+    private String name;
+    private Integer age;
 
     public Person(String name, Integer age) {
         this.name = name;
