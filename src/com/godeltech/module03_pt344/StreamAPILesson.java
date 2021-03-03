@@ -55,6 +55,12 @@ public class StreamAPILesson {
                 .average();
         System.out.println("Average statement is: " + average);
 
+        Stream.generate(Random::new)
+                .map(random -> random.nextInt(100))
+                .filter(x->x>0)
+                .limit(15)
+                .forEach(System.out::println);
+
     }
 
     private static void fillArrayRandomly() {
@@ -102,7 +108,7 @@ public class StreamAPILesson {
     }
 
     private static void workWithFiles() throws IOException {
-        Files.lines(Paths.get("C:\\Users\\d.stsepaniuk\\IdeaProjects\\GodelTechEurope\\src\\com\\godeltech\\module03_pt344\\text.txt"))
+        Files.lines(Paths.get("C:\\Users\\d.stsepaniuk\\IdeaProjects\\GodelTechEurope\\src\\com\\godeltech\\module03_pt344\\Hrodna.txt"))
                 .filter(x -> x.length() > 60)
                 .peek(System.out::println)
                 .forEach(x -> System.out.println("Searching value is: " + x.length()));
