@@ -27,7 +27,7 @@ public class LambdasModule {
 //        Predicate<Integer> predicate = number -> number >= 44;
 //        System.out.println(predicate.test(50));
 //
-//        System.out.println("Function test:");//
+//        System.out.println("Function test:");// get some <T> data type, but return <R>... somehow ...
 //        Function<Integer, Integer> function = con -> con + 4444;
 //        System.out.println(function.apply(new Person("Vas", 333, 20).getSalary()));
 //
@@ -65,9 +65,6 @@ public class LambdasModule {
         }
         return personArrayList;
     }
-
-
-
 
 }
 

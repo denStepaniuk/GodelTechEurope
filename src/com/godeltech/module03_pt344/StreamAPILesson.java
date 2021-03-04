@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamAPILesson {
@@ -17,49 +18,54 @@ public class StreamAPILesson {
         fillPersonsList();
         workWithFiles();
 
-        //find person who get salary > 50k;
-        personList.stream()
-                .filter(x -> x.getSalary() > 50_000)
-                .forEach(System.out::println);
 
-        //find first in collection;
-        Optional<AnotherPerson> first = personList.stream()
-                .filter(x -> x.getSalary() > 25_000)
-                .findFirst();
-        first.ifPresent(System.out::println);
+        Map<Integer, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getAge));
+        collect.entrySet().forEach(System.out::println);
+//        collect.keySet().forEach(System.out::println); // keep commented out
 
-        //find first match occurrence;
-        Optional<Integer> first1 = Stream.of(ints)
-                .distinct()
-                .filter(x -> x == 44)
-                .findFirst();
-        System.out.println(first1);
-
-        //work with arrays;
-        Stream.of(ints)
-                .distinct()
-                .filter(x -> x % 2 == 0)
-                .filter(x -> x % 5 == 0)
-                .sorted()
-                .forEach(System.out::println);
-
-        //find sum of all persons salary;
-        int sum = personList.stream()
-                .mapToInt(AnotherPerson::getSalary)
-                .sum();
-        System.out.println("Sum of all occurrences: " + sum);
-
-        //fin average statement of al persons salary;
-        OptionalDouble average = personList.stream()
-                .mapToInt(AnotherPerson::getSalary)
-                .average();
-        System.out.println("Average statement is: " + average);
-
-        Stream.generate(Random::new)
-                .map(random -> random.nextInt(100))
-                .filter(x->x>0)
-                .limit(15)
-                .forEach(System.out::println);
+//        personList.stream()
+//                .filter(x -> x.getSalary() > 50_000)
+//                .forEach(System.out::println);
+//
+//        //find first in collection;
+//        Optional<AnotherPerson> first = personList.stream()
+//                .filter(x -> x.getSalary() > 25_000)
+//                .findFirst();
+//        first.ifPresent(System.out::println);
+//
+//        //find first match occurrence;
+//        Optional<Integer> first1 = Stream.of(ints)
+//                .distinct()
+//                .filter(x -> x == 44)
+//                .findFirst();
+//        System.out.println(first1);
+//
+//        //work with arrays;
+//        Stream.of(ints)
+//                .distinct()
+//                .filter(x -> x % 2 == 0)
+//                .filter(x -> x % 5 == 0)
+//                .sorted()
+//                .forEach(System.out::println);
+//
+//        //find sum of all persons salary;
+//        int sum = personList.stream()
+//                .mapToInt(AnotherPerson::getSalary)
+//                .sum();
+//        System.out.println("Sum of all occurrences: " + sum);
+//
+//        //find average statement of al persons salary;
+//        OptionalDouble average = personList.stream()
+//                .mapToInt(AnotherPerson::getSalary)
+//                .average();
+//        System.out.println("Average statement is: " + average);
+//
+//        //random generate specify quantity of elements Integer type;
+//        Stream.generate(Random::new)
+//                .map(random -> random.nextInt(100))
+//                .filter(x -> x > 0)
+//                .limit(15)
+//                .forEach(System.out::println);
 
     }
 
@@ -69,7 +75,7 @@ public class StreamAPILesson {
         }
     }
 
-    private static void fillPersonsList() {
+    public static void fillPersonsList() {
         for (int i = 0; i < 9; i++) {
             switch (i) {
                 case 1:
@@ -113,6 +119,7 @@ public class StreamAPILesson {
                 .peek(System.out::println)
                 .forEach(x -> System.out.println("Searching value is: " + x.length()));
     }
+
 }
 
 /**
