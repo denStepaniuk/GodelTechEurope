@@ -21,7 +21,7 @@ public class StreamAPILesson {
         workWithFiles();
 
 
-        Map<Integer, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getAge));
+        Map<String, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getCountry));
         collect.entrySet().forEach(System.out::println);
 //        collect.keySet().forEach(System.out::println); // leave commented out
 
