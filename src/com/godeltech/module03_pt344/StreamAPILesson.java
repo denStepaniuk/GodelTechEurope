@@ -116,7 +116,7 @@ public class StreamAPILesson {
                 default:
                     names = MenNames.JHON;
             }
-            personList.add(new AnotherPerson(names, random.nextInt(65 - 18) + 18,
+            personList.add(new AnotherPerson(i <5 ? "Belgium" : "Bangladesh"  ,names, random.nextInt(65 - 18) + 18,
                     random.nextInt(100_000 - 25_000) + 25_000));
         }
         return personList;
@@ -141,15 +141,16 @@ public class StreamAPILesson {
  * As usual class for test;
  */
 class AnotherPerson {
+    private String country;
     private MenNames name;
     private int age;
     private int salary;
 
-    public AnotherPerson(MenNames name, int age, int salary) {
+    public AnotherPerson(String country, MenNames name, int age, int salary) {
+        this.country = country;
         this.name = name;
         this.age = age;
         this.salary = salary;
-
     }
 
     public MenNames getName() {
@@ -174,6 +175,10 @@ class AnotherPerson {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     @Override
