@@ -23,7 +23,7 @@ public class StreamAPILesson {
 
         Map<Integer, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getAge));
         collect.entrySet().forEach(System.out::println);
-//        collect.keySet().forEach(System.out::println); // keep commented out
+//        collect.keySet().forEach(System.out::println); // leave commented out
 
 //        personList.stream()
 //                .filter(x -> x.getSalary() > 50_000)
