@@ -1,15 +1,17 @@
 package com.godeltech.module03_pt344;
+/**
+ * Work with stream API: sort, find, filter ... etc.
+ */
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StreamAPILesson {
     static final Random random = new Random();
-    static MenNames s;
+    static MenNames names;
     static final Integer[] ints = new Integer[1_000];
     static final List<AnotherPerson> personList = new LinkedList<>();
 
@@ -69,55 +71,68 @@ public class StreamAPILesson {
 
     }
 
+    /**
+     * Fill array;
+     */
     private static void fillArrayRandomly() {
         for (int i = 0; i < ints.length; i++) {
             ints[i] = random.nextInt(1_000) + 1;
         }
     }
 
-    public static void fillPersonsList() {
+    /**
+     * Method generate Persons with random statements of they age and salary;
+     */
+    public static List<AnotherPerson> fillPersonsList() {
         for (int i = 0; i < 9; i++) {
             switch (i) {
                 case 1:
-                    s = MenNames.ALEX;
+                    names = MenNames.ALEX;
                     break;
                 case 2:
-                    s = MenNames.FELIX;
+                    names = MenNames.FELIX;
                     break;
                 case 3:
-                    s = MenNames.GEORG;
+                    names = MenNames.GEORG;
                     break;
                 case 4:
-                    s = MenNames.HARRY;
+                    names = MenNames.HARRY;
                     break;
                 case 5:
-                    s = MenNames.JHON;
+                    names = MenNames.JHON;
                     break;
                 case 6:
-                    s = MenNames.MICHAEL;
+                    names = MenNames.MICHAEL;
                     break;
                 case 7:
-                    s = MenNames.NICK;
+                    names = MenNames.NICK;
                     break;
                 case 8:
-                    s = MenNames.TIM;
+                    names = MenNames.TIM;
                     break;
                 case 9:
-                    s = MenNames.TOM;
+                    names = MenNames.TOM;
                     break;
                 default:
-                    s = MenNames.JHON;
+                    names = MenNames.JHON;
             }
-            personList.add(new AnotherPerson(s, random.nextInt(65 - 18) + 18,
+            personList.add(new AnotherPerson(names, random.nextInt(65 - 18) + 18,
                     random.nextInt(100_000 - 25_000) + 25_000));
         }
+        return personList;
     }
 
+    /**
+     * Method get lines from existing file, than print his (file) size;
+     */
     private static void workWithFiles() throws IOException {
         Files.lines(Paths.get("C:\\Users\\d.stsepaniuk\\IdeaProjects\\GodelTechEurope\\src\\com\\godeltech\\module03_pt344\\Hrodna.txt"))
                 .filter(x -> x.length() > 60)
                 .peek(System.out::println)
                 .forEach(x -> System.out.println("Searching value is: " + x.length()));
+        long size = Files.size(Paths.get("C:\\Users\\d.stsepaniuk\\IdeaProjects\\GodelTechEurope\\src\\com\\godeltech\\module03_pt344\\Hrodna.txt"));
+        System.out.println("Size is:" + size);
+
     }
 
 }
