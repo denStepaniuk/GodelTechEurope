@@ -3,7 +3,6 @@ package com.godeltech.module03_pt344;
  * Divine by type which AnotherPerson class have;
  */
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
