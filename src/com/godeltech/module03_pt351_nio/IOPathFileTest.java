@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Formatter;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * Try work with File class, readers/writers;
  */
 
-public class IOClassTest {
+public class IOPathFileTest {
     private static final File FOLDER_CREATOR = new File("c:\\someFolder");                    //declare and initialise folder name;
     private static final File CREATE_FILE = new File(FOLDER_CREATOR + "\\someFile.txt");       //declare and initialise file name;
 

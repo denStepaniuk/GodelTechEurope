@@ -22,15 +22,26 @@ public class ObjectIOStreamWriter {
      writeObjectStreamed(fileNameStream, StreamAPILesson.fillPersonsList());
     }
 
+    /**
+     * Method write in specify file instances of custom class using 'for' cycle;
+     * @param fileName
+     * @param list
+     * @throws IOException
+     */
     static void writeObject(String fileName, List<AnotherPerson> list) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)));
-
         for (AnotherPerson person : list) {
             out.writeObject(person);
         }
         out.close();
     }
 
+    /**
+     * Method write in specify file instances of custom class using 'streams';
+     * @param fileName
+     * @param list
+     * @throws IOException
+     */
     static void writeObjectStreamed(String fileName, List<AnotherPerson> list) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)));
         list.forEach(obj -> {
@@ -40,5 +51,13 @@ public class ObjectIOStreamWriter {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static String getFileName() {
+        return fileName;
+    }
+
+    public static String getFileNameStream() {
+        return fileNameStream;
     }
 }

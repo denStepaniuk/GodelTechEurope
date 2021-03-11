@@ -48,7 +48,7 @@ public class AnotherPerson implements Serializable {
 
     @Override
     public String toString() {
-        return "AnotherPerson{" +
+        return "AnotherPerson {" +
                 "name - " + name +
                 ", age = " + age +
                 ", salary = " + salary +

@@ -3,6 +3,7 @@ package com.godeltech.module03_pt351_nio;
 
 import com.godeltech.module03_pt344.AnotherPerson;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.file.Files;
@@ -20,20 +21,18 @@ public class ObjectIOStreamReader {
     static List<AnotherPerson> readObjects(String filename) {
         List<AnotherPerson> list = new LinkedList<>();
         boolean isRun = true;
-        try {
-            ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(filename)));
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(filename)))) {
             try {
                 while (isRun) {
                     AnotherPerson person = (AnotherPerson) in.readObject();
-                    if (!"".equals(person.getCountry())) {
+                    if (!"".equals(person.toString())) {
                         list.add(person);
                     } else {
                         isRun = false;
                     }
                 }
-            } catch (ClassNotFoundException e) {
-                System.out.println("File " + filename + " don't exist!");
-                e.printStackTrace();
+            } catch (ClassNotFoundException | EOFException e) {
+                System.out.println("EOF ha-ha-ha " + e);
             }
         } catch (IOException e) {
             e.printStackTrace();
