@@ -4,6 +4,7 @@ package com.godeltech.module03_pt344;
  */
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -20,8 +21,7 @@ public class StreamAPILesson {
         fillPersonsList();
         workWithFiles();
 
-
-        Map<String, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getCountry));
+        Map<Integer, List<AnotherPerson>> collect = personList.stream().collect(Collectors.groupingBy(AnotherPerson::getAge));
         collect.entrySet().forEach(System.out::println);
 //        collect.keySet().forEach(System.out::println); // leave commented out
 
