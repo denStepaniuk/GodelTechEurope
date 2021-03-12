@@ -3,13 +3,13 @@ package com.godeltech.module03_pt351_nio;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Set;
 
 public class DataTimeAPITests {
 
     public static void main(String[] args) {
         System.out.println("\n----------- old Java Calendar API -----------\n");
         Date date = new Date();
-
         Duration duration = Duration.ofDays(5);
         System.out.println("Duration " + duration);
 
@@ -44,10 +44,16 @@ public class DataTimeAPITests {
         System.out.println("Convert using a pattern formatter: yy/mm/dd: "
                 + localDateTime1.format(DateTimeFormatter.ofPattern("yy/MM//dd")));
 
+        //using a patterns for output times and dates;
         LocalTime parse = LocalTime.parse("15:30");
         LocalDateTime parse1 = LocalDateTime.parse("2007-12-03T10:15:30");
-        System.out.println(parse1);
-        System.out.println(parse);
+        System.out.println("Parsing date: " + parse1);
+        System.out.println("Another method for parsing: " + parse);
 
+        //get available time zones;
+        Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
+        availableZoneIds.stream()
+                .filter(x -> x.contains("Minsk"))
+                .forEach(System.out::println);
     }
 }
